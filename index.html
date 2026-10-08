@@ -407,7 +407,7 @@ function render(){
  if(exact){
   const card=document.createElement('article');card.className='panel';
   const head=document.createElement('div');head.className='result-heading';
-  head.innerHTML='<h2>'+safe(prettify(exact))+'</h2><span class="tag">Vídeo em Libras</span>';
+  head.innerHTML='<h2>'+safe(prettify(exact))+'</h2><span class="tag">Mídia</span>';
   const video=document.createElement('iframe');video.className='video';video.src=dictionary[exact];video.title='Sinal em Libras: '+exact;video.loading='lazy';video.allow='autoplay; fullscreen';video.allowFullscreen=true;video.referrerPolicy='strict-origin-when-cross-origin';
   card.append(head,video);
   const note=document.createElement('p');note.className='subtle';note.textContent='Referência: comunidade surda de Goiânia/Goiás. A realização de sinais pode variar conforme a região.';card.appendChild(note);
