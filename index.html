@@ -1,77 +1,84 @@
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dicionário Português x LIBRAS</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #2c3e50;
-        }
-
-        #search {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            margin-bottom: 20px;
-            border: 2px solid #3498db;
-            border-radius: 5px;
-        }
-
-        #result {
-            margin-top: 20px;
-            /* Removed min-height to allow content to dictate height */
-        }
-
-        .result-item {
-            margin-bottom: 20px; /* Space between multiple results */
-        }
-
-        .result-item h2 {
-            margin-bottom: 10px;
-            color: #34495e;
-            text-align: left;
-        }
-
-        iframe {
-            width: 100%;
-            height: 400px;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .not-found {
-            color: #e74c3c;
-            font-size: 18px;
-            margin-top: 50px;
-        }
-
-        footer {
-            margin-top: 40px;
-            padding: 20px;
-            color: #7f8c8d;
-            font-size: 14px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f4ee">
+<meta name="description" content="Libras Católica: consulte sinais e expressões do contexto católico em Libras, com referência na comunidade surda de Goiânia, Goiás.">
+<title>Libras Católica | Acervo de Sinais Católicos</title>
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#283b33;background:#f7f4ee;font-synthesis:none}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column}
+button,input{font:inherit}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #98783d;outline-offset:3px}
+.container{width:min(100% - 36px,960px);margin-inline:auto}
+header{border-bottom:1px solid #e3ded5;background:#f7f4ee}
+.topbar{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:750;font-size:1.16rem;letter-spacing:-.025em;text-decoration:none}
+.mark{display:grid;place-items:center;width:42px;height:42px;background:#e8e1d3;border-radius:13px;color:#75582e;font-size:1.4rem}
+.top-note{font-size:.82rem;color:#766f61;text-align:right}
+main{flex:1}
+.hero{padding:62px 0 38px;text-align:center}
+.eyebrow{text-transform:uppercase;letter-spacing:.17em;font-size:.74rem;color:#8c713c;font-weight:750}
+h1{font-family:Georgia,"Times New Roman",serif;font-weight:600;font-size:clamp(2.15rem,5.8vw,3.55rem);line-height:1.14;letter-spacing:-.035em;margin:15px auto;max-width:740px}
+.lead{max-width:640px;margin:0 auto;color:#686e67;line-height:1.7;font-size:1.02rem}
+.search-panel{max-width:760px;margin:34px auto 0;text-align:left}
+.search-box{display:flex;align-items:center;gap:12px;background:white;border:1px solid #d9d2c5;border-radius:15px;padding:7px 10px 7px 18px;box-shadow:0 7px 23px #3034260b;transition:border-color .2s,box-shadow .2s}
+.search-box:focus-within{border-color:#927540;box-shadow:0 0 0 3px #92754021}
+.magnifier{color:#897b64;font-size:1.25rem}
+#search{min-width:0;width:100%;border:0;outline:0;padding:12px 0;color:#283b33;background:transparent;font-size:1rem}
+#search::placeholder{color:#8a8a83}
+#clear{border:0;border-radius:9px;padding:9px 11px;background:#efeae1;color:#5d5b52;cursor:pointer}
+#clear[hidden]{display:none}
+.search-hint,.reference{font-size:.87rem;color:#79786e;line-height:1.6}
+.search-hint{margin:10px 3px}
+.reference{text-align:center;margin:17px auto 0;max-width:730px}
+.results{max-width:760px;margin:0 auto 76px}
+.status{color:#697168;font-size:.95rem;margin:0 0 15px}
+.panel{background:white;border:1px solid #e6e0d8;border-radius:18px;padding:clamp(17px,3vw,26px);box-shadow:0 7px 26px #30342609}
+.result-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 17px}
+.result-heading h2{font-size:1.25rem;margin:0;font-weight:700}
+.tag{background:#f2eddf;color:#795f30;font-size:.77rem;padding:7px 10px;border-radius:99px;white-space:nowrap}
+.video{aspect-ratio:16/9;width:100%;display:block;border:0;border-radius:12px;background:#e9ece8}
+.suggestions{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
+.suggestion{border:1px solid #d7d0c4;background:#fff;border-radius:99px;padding:9px 14px;color:#354a3f;cursor:pointer}
+.suggestion:hover{background:#ede7dd;border-color:#9b855f}
+.subtle{color:#6e746c;line-height:1.65;font-size:.92rem}
+.empty{text-align:center;padding:26px 12px}
+.empty h2{margin:0 0 8px;font-size:1.12rem}
+footer{border-top:1px solid #e1dbd0;padding:24px 0 28px;text-align:center;color:#75746e;font-size:.79rem;line-height:1.8}
+footer p{margin:0}
+footer a{text-decoration:none;border-bottom:1px solid currentColor}
+footer a:hover{text-decoration:underline}
+@media(max-width:560px){.container{width:min(100% - 28px,960px)}.topbar{min-height:68px}.top-note{display:none}.hero{padding:43px 0 29px}.lead{font-size:.95rem}.search-panel{margin-top:27px}.result-heading{align-items:flex-start;flex-direction:column;gap:7px}.results{margin-bottom:50px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
 </head>
 <body>
-    <h1>Dicionário Português x LIBRAS</h1>
-    <h2>Sinais Católicos - Goiânia/Goiás</h2>
-
-    <input type="text" id="search" placeholder="Digite uma palavra">
-
-    <div id="result"></div>
-
-    <script>
-        const dictionary = {
+<header><div class="container topbar"><a class="brand" href="./" aria-label="Libras Católica, início"><span class="mark" aria-hidden="true">✝</span><span>Libras Católica</span></a><span class="top-note">Acervo de sinais católicos</span></div></header>
+<main class="container">
+<section class="hero" aria-labelledby="page-title">
+<div class="eyebrow">Dicionário de sinais católicos</div>
+<h1 id="page-title">A fé também se comunica em Libras.</h1>
+<p class="lead">Encontre sinais e expressões utilizados no contexto católico. Pesquise um termo e consulte o vídeo correspondente.</p>
+<div class="search-panel" role="search">
+<label for="search" class="eyebrow" style="display:block;margin-bottom:10px;letter-spacing:.05em;text-transform:none;font-size:.88rem">Qual sinal você procura?</label>
+<div class="search-box"><span class="magnifier" aria-hidden="true">⌕</span><input id="search" type="search" autocomplete="off" placeholder="Ex.: batismo, sacramento, oração…" aria-describedby="search-hint"><button type="button" id="clear" hidden aria-label="Limpar pesquisa">Limpar</button></div>
+<p class="search-hint" id="search-hint">Você pode pesquisar uma palavra inteira ou apenas parte dela, com ou sem acento.</p>
+</div>
+<p class="reference">Referência linguística e cultural dos sinais em Libras deste acervo: comunidade surda de Goiânia/Goiás. Podem existir variações regionais.</p>
+</section>
+<section id="result" class="results" aria-live="polite" aria-atomic="false"><div class="panel empty"><h2>Comece sua pesquisa</h2><p class="subtle">Digite um termo acima para consultar os sinais disponíveis no acervo.</p></div></section>
+</main>
+<footer><div class="container"><p>© 2026 Libras Católica. Todos os direitos reservados.</p><p>Desenvolvido por <a href="https://gebtecnologia.grupoeduardabispo.com.br/" target="_blank" rel="noopener noreferrer">Compass Rose Systems · GEB Tecnologia</a></p></div></footer>
+<script>
+'use strict';
+// REGRA INTERNA — LIBRAS CATÓLICA: a comunidade surda de Goiânia/Goiás é a referência
+// linguística e cultural para todo o material em Libras deste produto.
+// Preservar a procedência dos vídeos e observar possíveis variações regionais.
+const dictionary = {
        	'jeremias': 'https://drive.google.com/file/d/1--cFKlAn9qaMN0MyK4yrqzT37UH9-XeO/preview',
        	'ira': 'https://drive.google.com/file/d/1-7Axhnxf1ZGGjufVGayTDuwVfz8-VUBK/preview',
        	'gula': 'https://drive.google.com/file/d/1-L3516SNk4g1BnnIX9D982IrgXk4bc_k/preview',
@@ -374,36 +381,54 @@
        	'baal': 'https://drive.google.com/file/d/1zvggBF17sAjH3-y66unqYYdeMhDvYKX7/preview',
        	'novo testamento': 'https://drive.google.com/file/d/1zvnrOjrVLRqdNDHONYsmoFpvZ_-4DGPA/preview',
         };
-
-        const searchInput = document.getElementById('search');
-        const resultDiv = document.getElementById('result');
-
-        searchInput.addEventListener('input', function() {
-            const word = this.value.toLowerCase().trim();
-
-            if (word === '') {
-                resultDiv.innerHTML = '';
-                return;
-            }
-
-            if (dictionary[word]) {
-                resultDiv.innerHTML = `
-                    <div class="result-item">
-                        <h2>${word.charAt(0).toUpperCase() + word.slice(1)} em LIBRAS:</h2>
-                        <iframe src="${dictionary[word]}" allow="autoplay"></iframe>
-                    </div>
-                `;
-            } else {
-                resultDiv.innerHTML = `
-                    <div class="not-found">
-                        Palavra não encontrada no dicionário. Tente outra palavra ou termo.
-                    </div>
-                `;
-            }
-        });
-    </script>
-    <footer>
-        <p><a>Contato: dudowsantana@gmail.com</a></p>    
-    </footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+const searchInput=document.getElementById('search');
+const resultDiv=document.getElementById('result');
+const clearButton=document.getElementById('clear');
+const terms=Object.keys(dictionary);
+const normalize=value=>value.toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim().replace(/\s+/g,' ');
+const prettify=value=>value.charAt(0).toLocaleUpperCase('pt-BR')+value.slice(1);
+const safe=(value)=>{const node=document.createElement('span');node.textContent=value;return node.innerHTML};
+function choose(term){searchInput.value=term;render();searchInput.focus()}
+function suggestions(items,title){
+ const wrap=document.createElement('div');const hint=document.createElement('p');hint.className='subtle';hint.textContent=title;wrap.appendChild(hint);
+ const list=document.createElement('div');list.className='suggestions';
+ for(const term of items){const button=document.createElement('button');button.type='button';button.className='suggestion';button.textContent=prettify(term);button.addEventListener('click',()=>choose(term));list.appendChild(button)}
+ wrap.appendChild(list);return wrap;
+}
+function render(){
+ const q=normalize(searchInput.value);clearButton.hidden=!searchInput.value;
+ resultDiv.replaceChildren();
+ if(!q){resultDiv.innerHTML='<div class="panel empty"><h2>Comece sua pesquisa</h2><p class="subtle">Digite um termo acima para consultar os sinais disponíveis no acervo.</p></div>';return}
+ const matches=terms.filter(term=>normalize(term).includes(q)).sort((a,b)=>{
+ const na=normalize(a),nb=normalize(b);const score=x=>x===q?0:x.startsWith(q)?1:2;
+ return score(na)-score(nb)||a.localeCompare(b,'pt-BR')
+ });
+ const exact=matches.find(term=>normalize(term)===q);
+ if(exact){
+  const card=document.createElement('article');card.className='panel';
+  const head=document.createElement('div');head.className='result-heading';
+  head.innerHTML='<h2>'+safe(prettify(exact))+'</h2><span class="tag">Vídeo em Libras</span>';
+  const video=document.createElement('iframe');video.className='video';video.src=dictionary[exact];video.title='Sinal em Libras: '+exact;video.loading='lazy';video.allow='autoplay; fullscreen';video.allowFullscreen=true;video.referrerPolicy='strict-origin-when-cross-origin';
+  card.append(head,video);
+  const note=document.createElement('p');note.className='subtle';note.textContent='Referência: comunidade surda de Goiânia/Goiás. A realização de sinais pode variar conforme a região.';card.appendChild(note);
+  resultDiv.appendChild(card);
+  const related=matches.filter(x=>x!==exact).slice(0,12);
+  if(related.length)resultDiv.appendChild(suggestions(related,'Termos relacionados no acervo:'));
+ }else if(matches.length){
+  const card=document.createElement('div');card.className='panel';
+  const count=document.createElement('p');count.className='status';count.textContent=matches.length+' '+(matches.length===1?'termo encontrado':'termos encontrados')+' — escolha para assistir ao vídeo:';
+  card.append(count,suggestions(matches.slice(0,35),'Resultados para sua pesquisa:'));
+  if(matches.length>35){const extra=document.createElement('p');extra.className='subtle';extra.textContent='Mostrando os 35 primeiros resultados. Digite mais letras para refinar.';card.appendChild(extra)}
+  resultDiv.appendChild(card);
+ }else{
+  const card=document.createElement('div');card.className='panel empty';
+  card.innerHTML='<h2>Nenhum sinal encontrado</h2><p class="subtle">Tente um termo mais curto ou outra forma de escrever a palavra.</p>';
+  resultDiv.appendChild(card);
+ }
+}
+searchInput.addEventListener('input',render);
+clearButton.addEventListener('click',()=>{searchInput.value='';render();searchInput.focus()});
+render();
+</script>
+</body>
 </html>
